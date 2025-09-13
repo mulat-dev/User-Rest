@@ -1,0 +1,135 @@
+/* src/components/HeroSection.css */
+
+.hero-section {
+
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/190205150343-kitfo.jpg?q=w_1600,h_900,x_0,y_0,c_fill');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 8rem 1rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.hero-btn.primary {
+  background: linear-gradient(to right, #22c55e, #14b8a6);
+  color: white;
+  border: none;
+}
+
+.hero-btn.secondary {
+  background: rgba(34, 197, 94, 0.2);
+  color: white;
+  border: 2px solid #22c55e;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+}
+
+.hero-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.feature-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  padding: 0rem ;
+  border-radius: 1rem;
+  text-align: center;
+  color: white;
+}
+
+.feature-box .icon {
+  width: 40px;
+  height: 40px;
+  margin: 1rem auto 0.5rem;
+  background: linear-gradient(to right, orange, red);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-box .icon-1 {
+  width: 40px;
+  height: 40px;
+  margin: 1rem auto 0.5rem;
+  background: linear-gradient(to right, rgb(59, 201, 90), rgb(17, 155, 102));
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-box .icon-2 {
+  width: 40px;
+  height: 40px;
+  margin: 1rem auto 0.5rem;
+  background: linear-gradient(to right, rgb(117, 105, 219), rgb(154, 50, 214));
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

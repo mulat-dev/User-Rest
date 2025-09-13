@@ -1,0 +1,188 @@
+/* src/components/Header.css */
+
+.header {
+    height: 10%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background: linear-gradient(to right, rgb(218, 220, 226), rgb(218, 224, 220));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem;
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to right, rgb(9, 85, 226), rgb(10, 94, 133));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-top: 0.3rem;
+}
+
+.brand-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+
+}
+.brand-name a
+{
+text-decoration: none;
+color: #333;
+}
+.nav-links a,
+.drawer-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 20px;
+  margin-top: 0.5rem;
+}
+
+.nav-links a:hover,
+.drawer-nav a:hover {
+  color: #6366f1;
+}
+
+
+.right-side {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.order-btn {
+  background: linear-gradient(to right, #ff6f00, #ff6f00);
+  border: none;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 17px;
+  cursor: pointer;
+}
+.signup-btn {
+  background: linear-gradient(to right, rgb(48, 111, 230), rgb(148, 16, 224));
+  border: none;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.cart-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  font-size: 0.75rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #555;
+  display: block;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 60;
+}
+
+.mobile-menu-drawer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 300px;
+  max-width: 90%;
+  height: 100%;
+  background-color: white;
+  padding: 1.5rem;
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.drawer-nav a,
+.drawer-nav button {
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+  }
+
+  .signup-btn,
+  .order-btn {
+    display: inline-block;
+  }
+}

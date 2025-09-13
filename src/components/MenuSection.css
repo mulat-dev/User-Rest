@@ -1,0 +1,183 @@
+/* src/components/MenuSection.css */
+
+.menu-section {
+  padding: 4rem 2rem;
+  background: #e9eff8;
+  text-align: center;
+}
+
+.menu-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.menu-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 5rem;
+ margin-left: 0rem;
+}
+
+.filter-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 25px;
+  background: #eee;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+   background: linear-gradient(to right, #3fe764, #1e7457);
+  color: white;
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 20px; /* Adjust font size */
+}
+.menu-grid {  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.menu-card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s;
+  margin-bottom: 4rem;
+}
+
+.menu-card:hover {
+  transform: translateY(10px);
+}
+
+.menu-icon {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  display: flex;
+}
+
+.menu-icon img {
+  max-width: 100px;
+  max-height: 100%;
+}
+
+.menu-info {
+  background: #fff;
+  padding: 1.5rem;
+  text-align: left;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.menu-info h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tag {
+  font-size: 0.7rem;
+  background: #b42141;
+  border-radius: 5px;
+  padding: 0.1rem 0.4rem;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.tag.popular {
+  background: #e6f4ea;
+  color: #34a853;
+}
+
+.tag.spicy {
+  background: #fdecea;
+  color: #ea4335;
+}
+
+.menu-info p {
+  font-size: 1rem;
+  color: #1a1515;
+  margin: 0.5rem 0 1rem;
+}
+
+.menu-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.menu-meta .price {
+  color: hsl(24, 100%, 50%);
+}
+
+.menu-meta .rating {
+  color: #f07714;
+}
+
+.menu-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fav-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #38b19d;
+  cursor: pointer;
+}
+
+.fav-btn:hover {
+  color: #9c1010;
+}
+
+.add-btn {
+  background: linear-gradient(to right, #1a7e26, #236f72);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  width: 100%;
+  padding: 0.7rem;
+  cursor: pointer;
+  transition: background 0.9s;
+}
+
+.add-btn:hover {
+  background: linear-gradient(to right, #2f8a5e, #28d17b);
+}
+.order-btn {
+  background: linear-gradient(to right, #ff6f00, #ff6f00);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
