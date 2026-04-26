@@ -13,11 +13,11 @@ const HeroSection = ({ onExploreClick, onCartClick }) => {
       </div>
 
       <div className="hero-content">
-        <h1 className="hero-title">ምዓም ኣምበሳ</h1>
-        <p className="hero-subtitle">ብ ምዓዛና ንልለ</p>
-        <p className="hero-desc">
+        <h1 className="hero-title">Chanoly Noodles</h1>
+        <p className="hero-subtitle">"Fresh Noodles,  Bold flavors"</p>
+        {/* <p className="hero-desc">
           Experience the rich flavors of traditional Ethiopian injera and stews from the comfort of your home
-        </p>
+        </p> */}
 
         <div className="hero-buttons">
           {/* ✅ Use onClick props */}

@@ -18,8 +18,8 @@ const Header = ({ cartCount, onCartClick, onLoginClick, onSettingsClick, onOrder
         <div className="header-container">
           {/* Logo */}
           <div className="logo">
-            <div className="logo-circle">ምኣ</div>
-            <span className="brand-name"><a href="#home">ምዓም ኣምበሳ</a></span>
+            <div className="logo-circle">CN</div>
+            <span className="brand-name"><a href="#home">Chanoly Noodles</a></span>
           </div>
 
           {/* Mobile Menu Button */}

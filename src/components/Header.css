@@ -6,7 +6,7 @@
   top: 0;
   width: 100%;
   z-index: 50;
-  background: linear-gradient(to right, rgb(218, 220, 226), rgb(218, 224, 220));
+  background: linear-gradient(to right, #fff, #fff);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -27,7 +27,7 @@
 .logo-circle {
   width: 40px;
   height: 40px;
-  background: linear-gradient(to right, rgb(9, 85, 226), rgb(10, 94, 133));
+  background: linear-gradient(to right, rgb(216, 93, 21), rgb(216, 81, 19));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -46,12 +46,13 @@
 .brand-name a
 {
 text-decoration: none;
-color: #333;
+color: #fff;
+background-color: #ec660c;
 }
 .nav-links a,
 .drawer-nav a {
   text-decoration: none;
-  color: #333;
+  color: #ec660c;
   font-weight: 500;
   transition: color 0.3s ease;
   font-size: 20px;

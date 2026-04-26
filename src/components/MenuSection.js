@@ -4,12 +4,17 @@ import { dishes } from '../data/menuData';
 
 const categories = [
   'All Items',
-  'Traditional',
-  'Main Dishes',
-  'Vegetarian',
-  'Drinks',
+  'Noodles',
+  'Rice',
+  'Sizziling',
+  'Salads',
+  'Soup',
+  'Mojito',
+  'Smoothie',
+  'Extras',
   'Favorites'
 ];
+
 
 const MenuSection = ({ onAddToCart }) => {
   const [activeCategory, setActiveCategory] = useState('All Items');

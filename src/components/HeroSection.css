@@ -26,7 +26,7 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  color: white;
+  color: rgb(235, 95, 14);
   padding: 8rem 1rem 2rem;
   max-width: 800px;
   margin: 0 auto;
@@ -41,7 +41,8 @@
 
 .hero-subtitle {
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+    margin-bottom: 8rem;
+    color:#fff;
 }
 
 .hero-desc {

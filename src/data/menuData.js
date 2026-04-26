@@ -1,103 +1,129 @@
 // src/data/menuData.js
 
 export const dishes = [
+  // 🍜 NOODLES
   {
     id: 1,
-    name: "Traditional Injera Platter",
-    description: "Authentic spongy bread with spiced lentils, vegetables, and meat",
-    price: 450,
-    rating: 4.8,
-    image: "https://static.vecteezy.com/system/resources/previews/059/782/942/non_2x/a-platter-of-ethiopian-injera-topped-with-various-colorful-wot-stews-including-lentils-greens-and-chicken-placed-on-a-traditional-basket-table-with-natural-lighting-photo.jpeg",
-    tag: "Popular",
-    //bg: "linear-gradient(to right, #f857a6, #ff5858)",
-    category: "Traditional"
+    name: "Stir Fry Vegetable Noodle",
+    description: "Fresh noodles stir-fried with mixed vegetables",
+    price: 610,
+    rating: 4.5,
+    category: "Noodles",
+    image: "https://images.unsplash.com/photo-1604908177522-040d2bcd27a6",
   },
   {
     id: 2,
-    name: "Fresh Injera Bread",
-    description: "Freshly made traditional Ethiopian sourdough flatbread",
-    price: 80,
-    rating: 4.5,
-    image: "https://static.vecteezy.com/system/resources/previews/059/782/942/non_2x/a-platter-of-ethiopian-injera-topped-with-various-colorful-wot-stews-including-lentils-greens-and-chicken-placed-on-a-traditional-basket-table-with-natural-lighting-photo.jpeg",
-    tag: null,
-    bg: "linear-gradient(to right, #f9d423, #ff4e50)",
-    category: "Vegetarian"
+    name: "Stir Fry Chicken Noodle",
+    description: "Chicken stir-fried with noodles and vegetables",
+    price: 670,
+    rating: 4.7,
+    category: "Noodles",
+    image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b",
   },
   {
     id: 3,
-    name: "Spiced Lamb Stew",
-    description: "Tender lamb slow-cooked with traditional Tigrayan spices",
-    price: 380,
-    rating: 4.9,
-    bg: "linear-gradient(to right, #ff416c, #ff4b2b)",
-    tag: "Spicy",
-    image: "https://static.vecteezy.com/system/resources/previews/059/782/942/non_2x/a-platter-of-ethiopian-injera-topped-with-various-colorful-wot-stews-including-lentils-greens-and-chicken-placed-on-a-traditional-basket-table-with-natural-lighting-photo.jpeg",
-    category: "Main Dishes"
+    name: "Stir Fry Beef Noodle",
+    description: "Tender beef with noodles in special sauce",
+    price: 790,
+    rating: 4.8,
+    category: "Noodles",
+    image: "https://images.unsplash.com/photo-1585032226651-759b368d7246",
+    tag: "Popular",
   },
+
+  // 🍚 RICE
   {
     id: 4,
-    name: "Vegetarian Lentil Stew",
-    description: "Hearty lentils simmered with vegetables and spices",
-    price: 250,
-    rating: 4.7,
-    image: "https://static.vecteezy.com/system/resources/previews/059/782/942/non_2x/a-platter-of-ethiopian-injera-topped-with-various-colorful-wot-stews-including-lentils-greens-and-chicken-placed-on-a-traditional-basket-table-with-natural-lighting-photo.jpeg",
-    tag: "Vegan",
-    bg: "linear-gradient(to right, #ff6a00, #ee0979)",
-    category: "Vegetarian"
+    name: "Vegetable Fried Rice",
+    description: "Rice stir-fried with vegetables",
+    price: 560,
+    rating: 4.4,
+    category: "Rice",
+    image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b",
   },
   {
     id: 5,
-    name: "Ethiopian Coffee Ceremony",
-    description: "Experience the traditional Ethiopian coffee brewing process",
-    price: 100,
+    name: "Chicken Fried Rice",
+    description: "Rice stir-fried with chicken and vegetables",
+    price: 740,
     rating: 4.6,
-    image: "https://static.vecteezy.com/system/resources/previews/059/782/942/non_2x/a-platter-of-ethiopian-injera-topped-with-various-colorful-wot-stews-including-lentils-greens-and-chicken-placed-on-a-traditional-basket-table-with-natural-lighting-photo.jpeg",
-    tag: null,
-    bg: "linear-gradient(to right, #00c6ff, #0072ff)",
-    category: "Drinks"
+    category: "Rice",
+    image: "https://images.unsplash.com/photo-1585032226651-759b368d7246",
   },
+
+  // 🔥 SIZZLING
   {
     id: 6,
-    name: "Tigray Special Kitfo",
-    description: "Minced raw beef seasoned with spices, served with traditional sides",
-    price: 500,
+    name: "Chicken Sizzling",
+    description: "Hot sizzling chicken with vegetables",
+    price: 1290,
     rating: 4.9,
-    image: "/images/kitfo-icon.png",
+    category: "Sizziling",
     tag: "Signature",
-    bg: "linear-gradient(to right, #ff416c, #ff4b2b)",
-    category: "Traditional"
+    image: "https://images.unsplash.com/photo-1604908177522-040d2bcd27a6",
   },
   {
     id: 7,
-    name: "Doro Wat Chicken Stew",
-    description: "Spicy chicken stew with hard-boiled eggs, served with injera",
-    price: 420,
+    name: "Beef Sizzling",
+    description: "Sizzling beef served hot and spicy",
+    price: 970,
     rating: 4.8,
-    image: "/images/doro-wat-icon.png",
-    tag: "Spicy",
-    bg: "linear-gradient(to right, #ffafbd, #ffc3a0)",
-    category: "Main Dishes"
+    category: "Sizziling",
+    image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141",
   },
+
+  // 🥗 SALADS
   {
     id: 8,
-    name: "Ethiopian Honey Wine",
-    description: "Traditional honey wine with a unique flavor profile",
-    price: 150,
-    rating: 4.5,
-    image: "/images/honey-wine-icon.png",
-    tag: null,
-    bg: "linear-gradient(to right, #f7971e, #ffd200)",
-    category: "Drinks"
+    name: "Chicken Salad (Half)",
+    description: "Fresh salad topped with chicken",
+    price: 680,
+    rating: 4.3,
+    category: "Salads",
+    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1",
   },
+
+  // 🍲 SOUP
   {
     id: 9,
-    name: "Ethiopian Spice Mix",
-    description: "A blend of traditional Ethiopian spices for cooking",
-    price: 200,
-    rating: 4.7,
-    image: "/images/spice-mix-icon.png",
-    tag: "Signature",
-    bg: "linear-gradient(to right, #ff416c, #ff4b2b)",
-    category: "Condiments"
-  }
+    name: "Egg Noodle Soup",
+    description: "Warm noodle soup with egg",
+    price: 400,
+    rating: 4.2,
+    category: "Soup",
+    image: "https://images.unsplash.com/photo-1604908177522-040d2bcd27a6",
+  },
+
+  // 🍹 MOJITO
+  {
+    id: 10,
+    name: "Classic Mojito",
+    description: "Refreshing mint lime mojito",
+    price: 370,
+    rating: 4.6,
+    category: "Mojito",
+    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b",
+  },
+
+  // 🥤 SMOOTHIE
+  {
+    id: 11,
+    name: "Strawberry Smoothie",
+    description: "Fresh strawberry blended smoothie",
+    price: 220,
+    rating: 4.5,
+    category: "Smoothie",
+    image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625",
+  },
+
+  // ➕ EXTRAS
+  {
+    id: 12,
+    name: "Extra Egg",
+    description: "Add extra egg to your dish",
+    price: 30,
+    rating: 4.0,
+    category: "Extras",
+    image: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc",
+  },
 ];
