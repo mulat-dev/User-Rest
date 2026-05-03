@@ -10,7 +10,7 @@
 .hero-bg-image {
   position: absolute;
   inset: 0;
-  background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/190205150343-kitfo.jpg?q=w_1600,h_900,x_0,y_0,c_fill');
+  background-image: url("../assets/summit chanolly.webp");
   background-size: cover;
   background-position: center;
   z-index: 1;

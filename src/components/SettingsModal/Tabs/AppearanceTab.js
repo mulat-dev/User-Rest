@@ -1,54 +1,56 @@
-import React, { useState } from 'react';
-import './TabContent.css'; 
+import React from "react";
+import "./TabContent.css";
 
-const AppearanceTab = () => {
-  const [theme, setTheme] = useState('light');
-  const [fontSize, setFontSize] = useState('normal');
-
+const AppearanceTab = ({ darkMode, fontSize, onSettingsChange, t }) => {
   return (
     <div className="tab-content">
-      <h3>Appearance</h3>
+      <h3>{t("appearance")}</h3>
 
       <div className="section">
-        <p className="label">Theme</p>
+        <p className="label">{t("theme")}</p>
         <div className="theme-options">
-          <div
-            className={`theme-box ${theme === 'light' ? 'active' : ''}`}
-            onClick={() => setTheme('light')}
+          <button
+            type="button"
+            className={`theme-box ${!darkMode ? "active" : ""}`}
+            onClick={() => onSettingsChange({ darkMode: false })}
           >
-            <span role="img" aria-label="light">🌞</span>
-            <p>Light</p>
-          </div>
-          <div
-            className={`theme-box ${theme === 'dark' ? 'active' : ''}`}
-            onClick={() => setTheme('dark')}
+            <span aria-hidden="true">Sun</span>
+            <p>{t("light")}</p>
+          </button>
+          <button
+            type="button"
+            className={`theme-box ${darkMode ? "active" : ""}`}
+            onClick={() => onSettingsChange({ darkMode: true })}
           >
-            <span role="img" aria-label="dark">🌙</span>
-            <p>Dark</p>
-          </div>
+            <span aria-hidden="true">Moon</span>
+            <p>{t("dark")}</p>
+          </button>
         </div>
       </div>
 
       <div className="section">
-        <p className="label">Font Size</p>
+        <p className="label">{t("fontSize")}</p>
         <div className="font-options">
           <button
-            className={fontSize === 'small' ? 'active' : ''}
-            onClick={() => setFontSize('small')}
+            type="button"
+            className={fontSize === "small" ? "active" : ""}
+            onClick={() => onSettingsChange({ fontSize: "small" })}
           >
-            Small
+            {t("small")}
           </button>
           <button
-            className={fontSize === 'normal' ? 'active' : ''}
-            onClick={() => setFontSize('normal')}
+            type="button"
+            className={fontSize === "normal" ? "active" : ""}
+            onClick={() => onSettingsChange({ fontSize: "normal" })}
           >
-            Normal
+            {t("normal")}
           </button>
           <button
-            className={fontSize === 'large' ? 'active' : ''}
-            onClick={() => setFontSize('large')}
+            type="button"
+            className={fontSize === "large" ? "active" : ""}
+            onClick={() => onSettingsChange({ fontSize: "large" })}
           >
-            Large
+            {t("large")}
           </button>
         </div>
       </div>

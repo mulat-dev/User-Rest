@@ -64,22 +64,25 @@
 }
 
 .menu-icon {
-  height: 100px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  display: flex;
+  background: rgba(255, 255, 255, 0.35);
+  padding: 1rem;
 }
 
 .menu-icon img {
-  max-width: 100px;
-  max-height: 100%;
+  width: 400px;
+  height: 100px;
+  max-width: 4000px;
+  object-fit: contain;
+  object-position: fill;
 }
 
 .menu-info {
   background: #fff;
-  padding: 1.5rem;
+  padding: 0.5rem;
   text-align: left;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -141,29 +144,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.85rem;
 }
 
 .fav-btn {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  color: #38b19d;
+  background: #f3fbf8;
+  border: 1px solid #d7f1e8;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 999px;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #1f9d7a;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
 .fav-btn:hover {
   color: #9c1010;
 }
 
+.fav-btn.active {
+  background: #fff1f1;
+  border-color: #ffd3d3;
+  color: #cf223c;
+}
+
 .add-btn {
   background: linear-gradient(to right, #1a7e26, #236f72);
   color: #fff;
   border: none;
-  padding: 0.6rem 1.2rem;
+  padding: 0.65rem 1rem;
   border-radius: 25px;
   font-weight: 600;
-  width: 100%;
-  padding: 0.7rem;
+  width: auto;
+  min-width: 138px;
+  margin-left: auto;
+  font-size: 0.92rem;
   cursor: pointer;
   transition: background 0.9s;
 }

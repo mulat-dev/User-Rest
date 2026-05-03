@@ -19,7 +19,7 @@
   min-width: 200px;
 }
 
-.footer-logo {
+.logo {
   display: flex;
   align-items: center;
   gap: 0.6rem;

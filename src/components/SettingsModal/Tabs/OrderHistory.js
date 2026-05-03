@@ -1,53 +1,44 @@
-import React from 'react';
-import './TabContent.css'; 
+import React from "react";
+import "./TabContent.css";
 
-const mockOrders = [
-  {
-    id: 'ORD123456',
-    date: 'July 25, 2025',
-    items: ['Traditional Injera Platter', 'Spiced Lamb Stew'],
-    total: '830 ETB',
-    status: 'Delivered',
-  },
-  {
-    id: 'ORD123457',
-    date: 'July 20, 2025',
-    items: ['Fresh Injera Bread'],
-    total: '80 ETB',
-    status: 'Cancelled',
-  },
-];
-
-const OrderHistoryTab = () => {
+const OrderHistoryTab = ({ orders, formatPrice, formatDate, t }) => {
   return (
     <div className="tab-content">
-      <h3>Order History</h3>
-      {mockOrders.length === 0 ? (
-        <p>No past orders found.</p>
+      <h3>{t("orderHistory")}</h3>
+      {orders.length === 0 ? (
+        <p>{t("noOrders")}</p>
       ) : (
         <ul className="order-list">
-          {mockOrders.map((order) => (
+          {orders.map((order) => (
             <li key={order.id} className="order-card">
               <div className="order-row">
-                <span className="order-label">Order ID:</span>
+                <span className="order-label">{t("orderId")}:</span>
                 <span>{order.id}</span>
               </div>
               <div className="order-row">
-                <span className="order-label">Date:</span>
-                <span>{order.date}</span>
+                <span className="order-label">{t("date")}:</span>
+                <span>{formatDate(order.createdAt || order.date)}</span>
               </div>
               <div className="order-row">
-                <span className="order-label">Items:</span>
-                <span>{order.items.join(', ')}</span>
+                <span className="order-label">{t("items")}:</span>
+                <span>{order.items.join(", ")}</span>
               </div>
               <div className="order-row">
-                <span className="order-label">Total:</span>
-                <span>{order.total}</span>
+                <span className="order-label">{t("total")}:</span>
+                <span>{formatPrice(order.total)}</span>
               </div>
               <div className="order-row">
-                <span className="order-label">Status:</span>
-                <span className={`order-status ${order.status.toLowerCase()}`}>
-                  {order.status}
+                <span className="order-label">{t("payment")}:</span>
+                <span>{t(order.paymentMethodKey || "cashOnDelivery")}</span>
+              </div>
+              <div className="order-row">
+                <span className="order-label">{t("region")}:</span>
+                <span>{order.region}</span>
+              </div>
+              <div className="order-row">
+                <span className="order-label">{t("status")}:</span>
+                <span className={`order-status ${order.status?.toLowerCase()}`}>
+                  {t(order.status === "placed" ? "statusPlaced" : "statusConfirmed")}
                 </span>
               </div>
             </li>

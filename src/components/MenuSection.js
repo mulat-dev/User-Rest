@@ -1,54 +1,45 @@
-import React, { useState } from 'react';
-import './MenuSection.css';
-import { dishes } from '../data/menuData';
+import React, { useState } from "react";
+import "./MenuSection.css";
+import { dishes } from "../data/menuData";
+import { translateCategory, translateTag } from "../i18n";
 
-const categories = [
-  'All Items',
-  'Noodles',
-  'Rice',
-  'Sizziling',
-  'Salads',
-  'Soup',
-  'Mojito',
-  'Smoothie',
-  'Extras',
-  'Favorites'
-];
+const categories = [...new Set(dishes.map((dish) => dish.category))];
 
-
-const MenuSection = ({ onAddToCart }) => {
-  const [activeCategory, setActiveCategory] = useState('All Items');
+const MenuSection = ({ onAddToCart, formatPrice, language, t }) => {
+  const [activeCategory, setActiveCategory] = useState(categories[0] || "");
   const [favorites, setFavorites] = useState([]);
 
   const toggleFavorite = (id) => {
     setFavorites((prev) =>
-      prev.includes(id)
-        ? prev.filter((favId) => favId !== id)
-        : [...prev, id]
+      prev.includes(id) ? prev.filter((favId) => favId !== id) : [...prev, id]
     );
   };
 
   const filteredDishes =
-    activeCategory === 'Favorites'
+    activeCategory === "Favorites"
       ? dishes.filter((dish) => favorites.includes(dish.id))
-      : activeCategory === 'All Items'
-      ? dishes
       : dishes.filter((dish) => dish.category === activeCategory);
 
   return (
     <section id="menu" className="menu-section">
-      <h2 className="menu-title">Our Menu</h2>
+      <h2 className="menu-title">{t("ourMenu")}</h2>
 
       <div className="menu-filters">
         {categories.map((category) => (
           <button
             key={category}
-            className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
+            className={`filter-btn ${activeCategory === category ? "active" : ""}`}
             onClick={() => setActiveCategory(category)}
           >
-            {category}
+            {translateCategory(language, category)}
           </button>
         ))}
+        <button
+          className={`filter-btn ${activeCategory === "Favorites" ? "active" : ""}`}
+          onClick={() => setActiveCategory("Favorites")}
+        >
+          {t("favorites")}
+        </button>
       </div>
 
       <div className="menu-grid">
@@ -61,23 +52,30 @@ const MenuSection = ({ onAddToCart }) => {
               <h3>
                 {dish.name}
                 {dish.tag && (
-                  <span className={`tag ${dish.tag.toLowerCase()}`}>{dish.tag}</span>
+                  <span className={`tag ${dish.tag.toLowerCase().replace(/[^a-z]/g, "")}`}>
+                    {translateTag(language, dish.tag)}
+                  </span>
                 )}
               </h3>
               <p>{dish.description}</p>
               <div className="menu-meta">
-                <span className="price">{dish.price} ETB</span>
-                <span className="rating">⭐ {dish.rating}</span>
+                <span className="price">{formatPrice(dish.price)}</span>
+                <span className="rating">{t("rating")} {dish.rating}</span>
               </div>
               <div className="menu-actions">
                 <button
-                  className={`fav-btn ${favorites.includes(dish.id) ? 'active' : ''}`}
+                  className={`fav-btn ${favorites.includes(dish.id) ? "active" : ""}`}
                   onClick={() => toggleFavorite(dish.id)}
+                  aria-label={
+                    favorites.includes(dish.id)
+                      ? t("removeFromFavorites", { name: dish.name })
+                      : t("addToFavorites", { name: dish.name })
+                  }
                 >
-                  {favorites.includes(dish.id) ? '❤️' : '♡'}
+                  {favorites.includes(dish.id) ? "\u2665" : "\u2661"}
                 </button>
                 <button className="add-btn" onClick={() => onAddToCart(dish)}>
-                  Add to Cart
+                  {t("addToCart")}
                 </button>
               </div>
             </div>

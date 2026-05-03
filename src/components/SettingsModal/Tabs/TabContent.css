@@ -27,7 +27,7 @@
 }
 
 .privacy-option {
-  margin-top: 4rem;
+  margin-top: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -59,6 +59,7 @@
   cursor: pointer;
   text-align: center;
   background-color: #f9f9f9;
+  font: inherit;
 }
 
 .theme-box.active {
@@ -99,6 +100,11 @@
   font-weight: 600;
   color: #333;
   text-align: left;
+}
+
+.privacy-option label {
+  margin: 0;
+  font-weight: 500;
 }
 
 .select-input {
@@ -145,6 +151,16 @@
   font-weight: bold;
 }
 
+.order-status.confirmed {
+  color: #2f7d32;
+  font-weight: bold;
+}
+
+.order-status.placed {
+  color: #df7a12;
+  font-weight: bold;
+}
+
 .input-field {
   width: 100%;
   padding: 0.6rem 1rem;
@@ -162,10 +178,24 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
+  border: none;
+  width: 100%;
+  font: inherit;
 }
 
 .account-link:hover {
   background: #e0e0e0;
+}
+
+.account-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.9rem 1rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  color: #333;
 }
 
 .clear-btn {
@@ -185,4 +215,10 @@
 
 .clear-btn:hover {
   background-color: #ffcccc;
+}
+
+.settings-note {
+  margin-top: 1rem;
+  color: #666;
+  line-height: 1.5;
 }

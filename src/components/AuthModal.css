@@ -87,6 +87,30 @@
   resize: horizontal;
 }
 
+.login-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.auth-feedback {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+}
+
+.auth-feedback.success {
+  background: #e8f7ec;
+  color: #1f7a35;
+}
+
+.auth-feedback.error {
+  background: #fdeaea;
+  color: #b3261e;
+}
+
 .primary-btn {
   width: 100%;
   background-color: #f3841c;

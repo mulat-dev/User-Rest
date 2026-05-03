@@ -1,65 +1,174 @@
 // src/components/AuthModal.jsx
 import React, { useState } from "react";
-import "./AuthModal.css"; // You can rename this to AuthModal.css if preferred
+import "./AuthModal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const AuthModal = ({ onClose }) => {
-  const [isLogin, setIsLogin] = useState(false); // Start with Register
+const emptyRegisterForm = {
+  fullName: "",
+  email: "",
+  phone: "",
+  address: "",
+  password: "",
+};
+
+const emptyLoginForm = {
+  email: "",
+  password: "",
+};
+
+const AuthModal = ({ onClose, onRegister, onLogin, currentUser, t }) => {
+  const [isLogin, setIsLogin] = useState(Boolean(currentUser));
+  const [registerForm, setRegisterForm] = useState(emptyRegisterForm);
+  const [loginForm, setLoginForm] = useState(emptyLoginForm);
+  const [feedback, setFeedback] = useState("");
+  const [feedbackType, setFeedbackType] = useState("");
 
   const toggleForm = () => {
     setIsLogin((prev) => !prev);
+    setFeedback("");
+    setFeedbackType("");
+  };
+
+  const updateRegisterForm = (field, value) => {
+    setRegisterForm((current) => ({ ...current, [field]: value }));
+  };
+
+  const updateLoginForm = (field, value) => {
+    setLoginForm((current) => ({ ...current, [field]: value }));
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+
+    if (Object.values(registerForm).some((value) => !value.trim())) {
+      setFeedback(t("fillAllFields"));
+      setFeedbackType("error");
+      return;
+    }
+
+    if (registerForm.password.trim().length < 6) {
+      setFeedback(t("passwordTooShort"));
+      setFeedbackType("error");
+      return;
+    }
+
+    const result = onRegister(registerForm);
+    setFeedback(result.message);
+    setFeedbackType(result.ok ? "success" : "error");
+
+    if (result.ok) {
+      setRegisterForm(emptyRegisterForm);
+    }
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    if (!loginForm.email.trim() || !loginForm.password.trim()) {
+      setFeedback(t("fillAllFields"));
+      setFeedbackType("error");
+      return;
+    }
+
+    const result = onLogin(loginForm);
+    setFeedback(result.message);
+    setFeedbackType(result.ok ? "success" : "error");
+
+    if (result.ok) {
+      setLoginForm(emptyLoginForm);
+    }
   };
 
   return (
     <div className="login-backdrop">
       <div className="login-modal">
         <div className="login-header">
-          <h2>{isLogin ? "Login" : "Register"}</h2>
+          <h2>{isLogin ? t("login") : t("register")}</h2>
           <button onClick={onClose} className="clos-btn">
             <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
 
+        {feedback && <p className={`auth-feedback ${feedbackType}`}>{feedback}</p>}
+
         {isLogin ? (
-          <form className="login-form">
-            <input type="email" placeholder="Enter your email" required />
-            <input type="password" placeholder="Enter your password" required />
+          <form className="login-form" onSubmit={handleLogin}>
+            <input
+              type="email"
+              placeholder={t("enterEmail")}
+              value={loginForm.email}
+              onChange={(event) => updateLoginForm("email", event.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder={t("enterPassword")}
+              value={loginForm.password}
+              onChange={(event) => updateLoginForm("password", event.target.value)}
+              required
+            />
             <button type="submit" className="primary-btn">
-              Login
+              {t("login")}
             </button>
             <p className="form-footer">
-              Don’t have an account?{" "}
+              {t("dontHaveAccount")}{" "}
               <button type="button" onClick={toggleForm} className="link-btn">
-                Register
+                {t("register")}
               </button>
             </p>
           </form>
         ) : (
-          <form className="login-form">
-            <label>Full Name</label>
-            <input type="text" placeholder="Enter your full name" required />
-            <label>Email</label>
-            <input type="email" placeholder="Enter your email" required />
+          <form className="login-form" onSubmit={handleRegister}>
+            <label>{t("fullName")}</label>
+            <input
+              type="text"
+              placeholder={t("enterFullName")}
+              value={registerForm.fullName}
+              onChange={(event) => updateRegisterForm("fullName", event.target.value)}
+              required
+            />
+            <label>{t("email")}</label>
+            <input
+              type="email"
+              placeholder={t("enterEmail")}
+              value={registerForm.email}
+              onChange={(event) => updateRegisterForm("email", event.target.value)}
+              required
+            />
 
-            <label>Phone Number</label>
-            <input type="tel" placeholder="Enter your phone number" required />
+            <label>{t("phoneNumber")}</label>
+            <input
+              type="tel"
+              placeholder={t("enterPhoneNumber")}
+              value={registerForm.phone}
+              onChange={(event) => updateRegisterForm("phone", event.target.value)}
+              required
+            />
 
-            <label>Delivery Address</label>
+            <label>{t("deliveryAddress")}</label>
             <textarea
-              placeholder="Enter your delivery address"
+              placeholder={t("enterDeliveryAddress")}
+              value={registerForm.address}
+              onChange={(event) => updateRegisterForm("address", event.target.value)}
               required
               rows="2"
             />
-            <label>Password</label>
-            <input type="password" placeholder="Create a password" required />
+            <label>{t("password")}</label>
+            <input
+              type="password"
+              placeholder={t("createPassword")}
+              value={registerForm.password}
+              onChange={(event) => updateRegisterForm("password", event.target.value)}
+              required
+            />
             <button type="submit" className="primary-btn">
-              Register
+              {t("register")}
             </button>
             <p className="form-footer">
-              Already have an account?{" "}
+              {t("alreadyHaveAccount")}{" "}
               <button type="button" onClick={toggleForm} className="link-btn">
-                Login
+                {t("login")}
               </button>
             </p>
           </form>

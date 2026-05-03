@@ -1,11 +1,16 @@
 // src/components/HeroSection.jsx
-import React from 'react';
-import './HeroSection.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils, faShoppingCart, faTruck, faLeaf, faStar } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import "./HeroSection.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUtensils,
+  faShoppingCart,
+  faTruck,
+  faLeaf,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
-// ✅ Add props
-const HeroSection = ({ onExploreClick, onCartClick }) => {
+const HeroSection = ({ onExploreClick, onCartClick, t }) => {
   return (
     <section id="home" className="hero-section">
       <div className="hero-bg-image">
@@ -13,19 +18,14 @@ const HeroSection = ({ onExploreClick, onCartClick }) => {
       </div>
 
       <div className="hero-content">
-        <h1 className="hero-title">Chanoly Noodles</h1>
-        <p className="hero-subtitle">"Fresh Noodles,  Bold flavors"</p>
-        {/* <p className="hero-desc">
-          Experience the rich flavors of traditional Ethiopian injera and stews from the comfort of your home
-        </p> */}
-
+        <h1 className="hero-title">Chanolly Noodles</h1>
+        <p className="hero-subtitle">"{t("heroSubtitle")}"</p>
         <div className="hero-buttons">
-          {/* ✅ Use onClick props */}
           <button className="hero-btn primary" onClick={onExploreClick}>
-            <FontAwesomeIcon icon={faUtensils} /> Explore Menu
+            <FontAwesomeIcon icon={faUtensils} /> {t("exploreMenu")}
           </button>
           <button className="hero-btn secondary" onClick={onCartClick}>
-            <FontAwesomeIcon icon={faShoppingCart} /> My Cart
+            <FontAwesomeIcon icon={faShoppingCart} /> {t("myCart")}
           </button>
         </div>
 
@@ -34,22 +34,22 @@ const HeroSection = ({ onExploreClick, onCartClick }) => {
             <div className="icon">
               <FontAwesomeIcon icon={faTruck} />
             </div>
-            <h3>Fast Delivery</h3>
-            <p>Quick delivery throughout Mekelle within 30 minutes</p>
+            <h3>{t("fastDelivery")}</h3>
+            <p>{t("fastDeliveryBody")}</p>
           </div>
           <div className="feature-box">
             <div className="icon-1">
               <FontAwesomeIcon icon={faLeaf} />
             </div>
-            <h3>Fresh Ingredients</h3>
-            <p>Locally sourced, organic ingredients for authentic taste</p>
+            <h3>{t("freshIngredients")}</h3>
+            <p>{t("freshIngredientsBody")}</p>
           </div>
           <div className="feature-box">
             <div className="icon-2">
               <FontAwesomeIcon icon={faStar} />
             </div>
-            <h3>Top Rated</h3>
-            <p>Loved by customers across Mekelle with 4.9★ rating</p>
+            <h3>{t("topRated")}</h3>
+            <p>{t("topRatedBody")}</p>
           </div>
         </div>
       </div>
@@ -58,4 +58,3 @@ const HeroSection = ({ onExploreClick, onCartClick }) => {
 };
 
 export default HeroSection;
-

@@ -1,6 +1,7 @@
 // src/components/Header.jsx
 import React, { useState } from "react";
 import "./Header.css";
+import logoImage from "../assets/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -9,20 +10,25 @@ import {
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ cartCount, onCartClick, onLoginClick, onSettingsClick, onOrderClick }) => {
+const Header = ({
+  cartCount,
+  onCartClick,
+  onLoginClick,
+  onSettingsClick,
+  onOrderClick,
+  t,
+  currentUser,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
       <header className="header sticky">
         <div className="header-container">
-          {/* Logo */}
-          <div className="logo">
-            <div className="logo-circle">CN</div>
-            <span className="brand-name"><a href="#home">Chanoly Noodles</a></span>
-          </div>
+          <a className="logo" href="#home" aria-label="Chanolly Noodles home">
+            <img className="logo-image" src={logoImage} alt="Chanolly Noodles" />
+          </a>
 
-          {/* Mobile Menu Button */}
           <button
             className="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(true)}
@@ -30,31 +36,28 @@ const Header = ({ cartCount, onCartClick, onLoginClick, onSettingsClick, onOrder
             <FontAwesomeIcon icon={faBars} />
           </button>
 
-          {/* Desktop Navigation */}
           <nav className="nav-links">
-            <a href="#home">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact</a>
+            <a href="#home">{t("navHome")}</a>
+            <a href="#menu">{t("navMenu")}</a>
+            <a href="#about">{t("navAbout")}</a>
+            <a href="#contact">{t("navContact")}</a>
             <a href="#!" onClick={onSettingsClick}>
-              Settings
+              {t("navSettings")}
             </a>
           </nav>
 
-          {/* Right Side */}
           <div className="right-side">
             <button className="order-btn" onClick={onOrderClick}>
-              Order Now
+              {t("orderNow")}
             </button>
 
-            {/* Guest Login */}
             <div className="guest">
               <button className="signup-btn" onClick={onLoginClick}>
-                <FontAwesomeIcon icon={faUserPlus} /> Sign Up
+                <FontAwesomeIcon icon={faUserPlus} />{" "}
+                {currentUser ? currentUser.fullName.split(" ")[0] : t("signUp")}
               </button>
             </div>
 
-            {/* Cart Button */}
             <button className="cart-btn" onClick={onCartClick}>
               <FontAwesomeIcon icon={faShoppingCart} />
               <span className="cart-count">{cartCount}</span>
@@ -63,15 +66,18 @@ const Header = ({ cartCount, onCartClick, onLoginClick, onSettingsClick, onOrder
         </div>
       </header>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="mobile-menu-overlay">
           <div className="mobile-menu-drawer">
             <div className="drawer-header">
-              <div className="logo">
-                <div className="logo-circle">ምኣ</div>
-                <span className="brand-name">ምዓም ኣምበሳ</span>
-              </div>
+              <a
+                className="logo"
+                href="#home"
+                aria-label="Chanolly Noodles home"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <img className="logo-image" src={logoImage} alt="Chanolly Noodles" />
+              </a>
               <button
                 className="close-drawer-btn"
                 onClick={() => setMobileMenuOpen(false)}
@@ -82,29 +88,37 @@ const Header = ({ cartCount, onCartClick, onLoginClick, onSettingsClick, onOrder
 
             <nav className="drawer-nav">
               <a href="#home" onClick={() => setMobileMenuOpen(false)}>
-                Home
+                {t("navHome")}
               </a>
               <a href="#menu" onClick={() => setMobileMenuOpen(false)}>
-                Menu
+                {t("navMenu")}
               </a>
               <a href="#about" onClick={() => setMobileMenuOpen(false)}>
-                About Us
+                {t("navAbout")}
               </a>
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                Contact
+                {t("navContact")}
               </a>
-              <a href="#!" onClick={() => setMobileMenuOpen(false)}>
-                Settings
+              <a
+                href="#!"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setMobileMenuOpen(false);
+                  onSettingsClick();
+                }}
+              >
+                {t("navSettings")}
               </a>
               <hr />
               <button
                 className="signup-btn"
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onLoginClick(); // open login modal after closing menu
+                  onLoginClick();
                 }}
               >
-                <FontAwesomeIcon icon={faUserPlus} /> Sign Up
+                <FontAwesomeIcon icon={faUserPlus} />{" "}
+                {currentUser ? currentUser.fullName.split(" ")[0] : t("signUp")}
               </button>
             </nav>
           </div>

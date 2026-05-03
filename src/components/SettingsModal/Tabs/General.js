@@ -1,27 +1,56 @@
-import React from 'react';
-import './TabContent.css';
+import React from "react";
+import "./TabContent.css";
 
-const General = () => {
+const General = ({
+  settings,
+  onSettingsChange,
+  onClearData,
+  onAccountClick,
+  onLogout,
+  currentUser,
+  t,
+}) => {
   return (
     <div className="tab-content">
-      <h3>General Settings</h3>
+      <h3>{t("generalSettings")}</h3>
 
-      <label>Currency</label>
-      <select className="input-field">
-        <option>Ethiopian Birr (ETB)</option>
-        <option>British Pound (GBP)</option>
-        <option>US Dollar (USD)</option>
-        <option>Euro (EUR)</option>
+      <label htmlFor="currency-select">{t("currency")}</label>
+      <select
+        id="currency-select"
+        className="input-field"
+        value={settings.currency}
+        onChange={(event) => onSettingsChange({ currency: event.target.value })}
+      >
+        <option value="ETB">Ethiopian Birr (ETB)</option>
+        <option value="GBP">British Pound (GBP)</option>
+        <option value="USD">US Dollar (USD)</option>
+        <option value="EUR">Euro (EUR)</option>
       </select>
 
-      <label>Account</label>
-      <div className="account-link">
-        <i className="fas fa-user-circle"></i> Account Settings
-      </div>
+      <label>{t("account")}</label>
+      {currentUser ? (
+        <>
+          <div className="account-summary">
+            <strong>{currentUser.fullName}</strong>
+            <span>{currentUser.email}</span>
+          </div>
+          <button className="account-link" onClick={onLogout}>
+            {t("signOut")}
+          </button>
+        </>
+      ) : (
+        <button className="account-link" onClick={onAccountClick}>
+          {t("accountSettings")}
+        </button>
+      )}
 
-      <label>Data</label>
-      <button className="clear-btn">
-        <i className="fas fa-trash"></i> Clear All Data
+      <label>{t("data")}</label>
+      <button
+        className="clear-btn"
+        onClick={onClearData}
+        type="button"
+      >
+        {t("clearAllData")}
       </button>
     </div>
   );

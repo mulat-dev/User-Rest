@@ -1,3 +1,11 @@
+.App,
+.App button,
+.App input,
+.App select,
+.App textarea {
+  font: inherit;
+}
+
 /* Dark Mode Styling */
 .dark-mode {
   background-color: #1c1c1c;
