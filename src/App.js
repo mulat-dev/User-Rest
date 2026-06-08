@@ -11,12 +11,14 @@ import Footer from "./components/Footer";
 import AboutUs from "./components/AboutUs";
 import CheckoutModal from "./components/CheckOutModal";
 import { createTranslator, getLocaleForLanguage } from "./i18n";
+import { dishes } from "./data/menuData";
 import "./App.css";
 
 const SETTINGS_STORAGE_KEY = "chanolly-settings";
 const ORDER_HISTORY_STORAGE_KEY = "chanolly-order-history";
 const USERS_STORAGE_KEY = "chanolly-users";
 const CURRENT_USER_STORAGE_KEY = "chanolly-current-user";
+const MENU_STORAGE_KEY = "chanolly-menu";
 
 const defaultSettings = {
   currency: "ETB",
@@ -68,6 +70,9 @@ function App() {
   const [orderHistory, setOrderHistory] = useState(() =>
     readStoredJson(ORDER_HISTORY_STORAGE_KEY, [])
   );
+  const [menuItems, setMenuItems] = useState(() =>
+    readStoredJson(MENU_STORAGE_KEY, dishes)
+  );
 
   const t = createTranslator(settings.language);
 
@@ -78,6 +83,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem(ORDER_HISTORY_STORAGE_KEY, JSON.stringify(orderHistory));
   }, [orderHistory]);
+
+  useEffect(() => {
+    localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(menuItems));
+  }, [menuItems]);
 
   useEffect(() => {
     localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(registeredUsers));
@@ -175,6 +184,8 @@ function App() {
     localStorage.removeItem(ORDER_HISTORY_STORAGE_KEY);
     localStorage.removeItem(USERS_STORAGE_KEY);
     localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
+    localStorage.removeItem(MENU_STORAGE_KEY);
+    setMenuItems(dishes);
     setShowCheckout(false);
     setCartOpen(false);
   };
@@ -265,7 +276,6 @@ function App() {
         cartCount={cartItems.length}
         onCartClick={() => setCartOpen(true)}
         onLoginClick={() => setShowLogin(true)}
-        onSettingsClick={() => setShowSettings(true)}
         onOrderClick={() => {
           document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
         }}
@@ -312,8 +322,14 @@ function App() {
         t={t}
       />
 
-      <FeaturedDishes onAddToCart={addToCart} formatPrice={formatPrice} t={t} />
+      <FeaturedDishes
+        dishes={menuItems}
+        onAddToCart={addToCart}
+        formatPrice={formatPrice}
+        t={t}
+      />
       <MenuSection
+        dishes={menuItems}
         onAddToCart={addToCart}
         formatPrice={formatPrice}
         language={settings.language}
@@ -342,6 +358,14 @@ function App() {
           onClose={() => setShowLogin(false)}
           onRegister={registerUser}
           onLogin={loginUser}
+          onLogout={() => {
+            logoutUser();
+            setShowLogin(false);
+          }}
+          onOpenSettings={() => {
+            setShowLogin(false);
+            setShowSettings(true);
+          }}
           currentUser={currentUser}
           t={t}
         />

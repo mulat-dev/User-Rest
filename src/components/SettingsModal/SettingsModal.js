@@ -40,7 +40,6 @@ const SettingsModal = ({
             onSettingsChange={onSettingsChange}
             onClearData={onClearData}
             onAccountClick={onAccountClick}
-            onLogout={onLogout}
             currentUser={currentUser}
             t={t}
           />

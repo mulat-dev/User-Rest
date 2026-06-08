@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import logoImage from "../assets/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
@@ -16,11 +17,10 @@ const Footer = ({ t }) => {
   return (
     <footer id="contact" className="footer">
       <div className="footer-container">
-        <div className="footer-column">
-          <div className="logo">
-            <div className="logo-circle-f">CN</div>
-            <span className="brand-name-1">Chanolly Noodles</span>
-          </div>
+        <div className="footer-column footer-brand-column">
+          <a className="footer-logo" href="#home" aria-label="Chanolly Noodles home">
+            <img className="footer-logo-image" src={logoImage} alt="Chanolly Noodles" />
+          </a>
           <p>{t("footerTagline")}</p>
         </div>
 

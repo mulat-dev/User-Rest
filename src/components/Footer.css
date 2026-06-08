@@ -1,8 +1,10 @@
 .footer {
-  background-color: #1b2431;
-  color: white;
+  background:
+    linear-gradient(180deg, #0f1115 0%, #050608 100%);
+  color: #f3f4f6;
   height: auto;
-  padding: 3rem 2rem 1rem;
+  padding: 3.2rem 2rem 1.2rem;
+  border-top: 1px solid rgba(236, 102, 12, 0.18);
 }
 
 .footer-container {
@@ -19,71 +21,79 @@
   min-width: 200px;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-.logo-circle-f {
- width: 40px;
-  height: 40px;
-  background: linear-gradient(to right, rgb(9, 85, 226), rgb(10, 94, 133));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  margin-top: 0.8rem;
+.footer-brand-column {
+  max-width: 320px;
 }
 
-.brand-name-1 {
-  font-family: 'Noto Sans Ethiopic', sans-serif;
-  font-size: 1.3rem;
-  color: #ffffff;
-  margin-top: 1rem;
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+
+.footer-logo-image {
+  width: 220px;
+  height: auto;
+  display: block;
 }
 
 .footer-column h4 {
-  font-size: 1.1rem;
-  margin-bottom: 0.6rem;
-  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+  color: #ec660c;
 }
 
 .footer-column p {
   font-size: 0.95rem;
-  margin: 0.4rem 0;
-  color: #ccc;
+  margin: 0.45rem 0;
+  color: #c2c8d0;
+  line-height: 1.6;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 
 .social-icons a {
-  margin-right: 0.5rem;
   color: white;
-  background: #ff5722;
-  padding: 0.5rem;
+  background: linear-gradient(to right, #ff6f00, #ec660c);
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   font-size: 1rem;
-  transition: background 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .social-icons a:hover {
-  background: #ff784e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(236, 102, 12, 0.2);
 }
 
 .footer hr {
-  margin: 2rem 0 1rem;
+  margin: 2rem auto 1rem;
   border: none;
-  border-top: 1px solid #333;
+  border-top: 1px solid rgba(236, 102, 12, 0.18);
+  max-width: 1200px;
 }
 
 .footer-bottom {
   text-align: center;
   font-size: 0.85rem;
-  color: #aaa;
+  color: #98a2b3;
 }
-.footer-bottom a {
-  color: #ff5722;
-  text-decoration: none;
+
+@media screen and (max-width: 767px) {
+  .footer {
+    padding: 2.5rem 1.2rem 1rem;
+  }
+
+  .footer-logo-image {
+    width: 190px;
+  }
 }

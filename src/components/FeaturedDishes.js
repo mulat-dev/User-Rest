@@ -1,12 +1,11 @@
 import React from "react";
 import "./FeaturedDishes.css";
-import { dishes as menuDishes } from "../data/menuData";
 
-const featuredDishes = menuDishes
-  .filter((dish) => ["Popular", "Signature"].includes(dish.tag) || dish.category === "Noodles")
-  .slice(0, 3);
+const FeaturedDishes = ({ dishes, onAddToCart, formatPrice, t }) => {
+  const featuredDishes = dishes
+    .filter((dish) => ["Popular", "Signature"].includes(dish.tag) || dish.category === "Noodles")
+    .slice(0, 3);
 
-const FeaturedDishes = ({ onAddToCart, formatPrice, t }) => {
   return (
     <section className="featured-section" id="featured">
       <h2 className="section-title">{t("featuredTitle")}</h2>

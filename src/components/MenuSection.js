@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./MenuSection.css";
-import { dishes } from "../data/menuData";
 import { translateCategory, translateTag } from "../i18n";
 
-const categories = [...new Set(dishes.map((dish) => dish.category))];
-
-const MenuSection = ({ onAddToCart, formatPrice, language, t }) => {
-  const [activeCategory, setActiveCategory] = useState(categories[0] || "");
+const MenuSection = ({ dishes, onAddToCart, formatPrice, language, t }) => {
+  const [activeCategory, setActiveCategory] = useState("");
   const [favorites, setFavorites] = useState([]);
+
+  const categories = useMemo(
+    () => [...new Set(dishes.map((dish) => dish.category))],
+    [dishes]
+  );
+
+  useEffect(() => {
+    if (!categories.length) {
+      setActiveCategory("");
+      return;
+    }
+
+    setActiveCategory((currentCategory) => {
+      if (currentCategory === "Favorites" || categories.includes(currentCategory)) {
+        return currentCategory;
+      }
+      return categories[0];
+    });
+  }, [categories]);
 
   const toggleFavorite = (id) => {
     setFavorites((prev) =>

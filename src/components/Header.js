@@ -14,7 +14,6 @@ const Header = ({
   cartCount,
   onCartClick,
   onLoginClick,
-  onSettingsClick,
   onOrderClick,
   t,
   currentUser,
@@ -41,9 +40,6 @@ const Header = ({
             <a href="#menu">{t("navMenu")}</a>
             <a href="#about">{t("navAbout")}</a>
             <a href="#contact">{t("navContact")}</a>
-            <a href="#!" onClick={onSettingsClick}>
-              {t("navSettings")}
-            </a>
           </nav>
 
           <div className="right-side">
@@ -98,16 +94,6 @@ const Header = ({
               </a>
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
                 {t("navContact")}
-              </a>
-              <a
-                href="#!"
-                onClick={(event) => {
-                  event.preventDefault();
-                  setMobileMenuOpen(false);
-                  onSettingsClick();
-                }}
-              >
-                {t("navSettings")}
               </a>
               <hr />
               <button

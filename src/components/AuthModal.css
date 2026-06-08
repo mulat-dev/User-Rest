@@ -141,3 +141,43 @@
   text-decoration: none;
   padding: 0;
 }
+
+.auth-actions-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.3rem;
+}
+
+.compact-btn {
+  width: auto;
+  flex: 1;
+}
+
+.secondary-auth-btn {
+  border: 1px solid #d8dce3;
+  border-radius: 8px;
+  background: #f7f8fa;
+  color: #344054;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+.secondary-auth-btn:hover {
+  background: #eef2f6;
+}
+
+.account-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.account-summary-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #f7f8fa;
+  color: #344054;
+}

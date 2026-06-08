@@ -6,7 +6,6 @@ const General = ({
   onSettingsChange,
   onClearData,
   onAccountClick,
-  onLogout,
   currentUser,
   t,
 }) => {
@@ -29,15 +28,10 @@ const General = ({
 
       <label>{t("account")}</label>
       {currentUser ? (
-        <>
-          <div className="account-summary">
-            <strong>{currentUser.fullName}</strong>
-            <span>{currentUser.email}</span>
-          </div>
-          <button className="account-link" onClick={onLogout}>
-            {t("signOut")}
-          </button>
-        </>
+        <div className="account-summary">
+          <strong>{currentUser.fullName}</strong>
+          <span>{currentUser.email}</span>
+        </div>
       ) : (
         <button className="account-link" onClick={onAccountClick}>
           {t("accountSettings")}

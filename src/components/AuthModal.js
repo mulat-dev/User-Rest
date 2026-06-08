@@ -17,8 +17,16 @@ const emptyLoginForm = {
   password: "",
 };
 
-const AuthModal = ({ onClose, onRegister, onLogin, currentUser, t }) => {
-  const [isLogin, setIsLogin] = useState(Boolean(currentUser));
+const AuthModal = ({
+  onClose,
+  onRegister,
+  onLogin,
+  onLogout,
+  onOpenSettings,
+  currentUser,
+  t,
+}) => {
+  const [isLogin, setIsLogin] = useState(false);
   const [registerForm, setRegisterForm] = useState(emptyRegisterForm);
   const [loginForm, setLoginForm] = useState(emptyLoginForm);
   const [feedback, setFeedback] = useState("");
@@ -84,7 +92,9 @@ const AuthModal = ({ onClose, onRegister, onLogin, currentUser, t }) => {
     <div className="login-backdrop">
       <div className="login-modal">
         <div className="login-header">
-          <h2>{isLogin ? t("login") : t("register")}</h2>
+          <h2>
+            {currentUser ? t("myAccount") : isLogin ? t("login") : t("register")}
+          </h2>
           <button onClick={onClose} className="clos-btn">
             <FontAwesomeIcon icon={faTimes} />
           </button>
@@ -92,7 +102,24 @@ const AuthModal = ({ onClose, onRegister, onLogin, currentUser, t }) => {
 
         {feedback && <p className={`auth-feedback ${feedbackType}`}>{feedback}</p>}
 
-        {isLogin ? (
+        {currentUser ? (
+          <div className="account-panel">
+            <div className="account-summary-card">
+              <strong>{currentUser.fullName}</strong>
+              <span>{currentUser.email}</span>
+              <span>{currentUser.phone}</span>
+            </div>
+
+            <div className="auth-actions-row">
+              <button type="button" className="primary-btn compact-btn" onClick={onOpenSettings}>
+                {t("navSettings")}
+              </button>
+              <button type="button" className="secondary-auth-btn compact-btn" onClick={onLogout}>
+                {t("signOut")}
+              </button>
+            </div>
+          </div>
+        ) : isLogin ? (
           <form className="login-form" onSubmit={handleLogin}>
             <input
               type="email"
